@@ -1,29 +1,17 @@
+// src/store/gallerySlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { fetchGalleryImages } from "./gallery"; // ایمپورت مستقیم
 
-// 1. فچ تصاویر گالری
-export const fetchGalleryImages = createAsyncThunk(
-  "gallery/fetchGalleryImages",
+export const fetchGalleryData = createAsyncThunk(
+  "gallery/fetchAll",
   async () => {
-    const res = await fetch("/gallery");
-    if (!res.ok) throw new Error("Failed to fetch gallery");
-    return res.json();
-  }
-);
-
-// 2. فچ تصویر پس‌زمینه (جدا)
-export const fetchBackgroundImage = createAsyncThunk(
-  "gallery/fetchBackgroundImage",
-  async () => {
-    const res = await fetch("/gallery");
-    if (!res.ok) throw new Error("Failed to fetch background");
-    const data = await res.json();
-    return data.backgroundImage;
+    return await fetchGalleryImages(); // مستقیم فراخوانی
   }
 );
 
 const initialState = {
   images: [],
-  backgroundImage: "/img/anti/پرده-بیمارستانی-1.jpg", // fallback
+  backgroundImage: "/img/anti/پرده-بیمارستانی-1.jpg",
   loading: false,
   error: null,
 };
@@ -34,31 +22,18 @@ const gallerySlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // برای گالری
-      .addCase(fetchGalleryImages.pending, (state) => {
+      .addCase(fetchGalleryData.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
-      .addCase(fetchGalleryImages.fulfilled, (state, action) => {
+      .addCase(fetchGalleryData.fulfilled, (state, action) => {
         state.loading = false;
-        state.images = action.payload.images || [];
+        state.images = action.payload.images;
         state.backgroundImage = action.payload.backgroundImage;
       })
-      .addCase(fetchGalleryImages.rejected, (state, action) => {
+      .addCase(fetchGalleryData.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      })
-
-      // برای پس‌زمینه
-      .addCase(fetchBackgroundImage.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(fetchBackgroundImage.fulfilled, (state, action) => {
-        state.loading = false;
-        state.backgroundImage = action.payload;
-      })
-      .addCase(fetchBackgroundImage.rejected, (state, action) => {
-        state.loading = false;
-        state.backgroundImage = initialState.backgroundImage;
       });
   },
 });

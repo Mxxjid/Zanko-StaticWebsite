@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchBackgroundImage } from "../store/gallerySlice";
+import { useSelector } from "react-redux";
 import {
   MotionH1,
   MotionP,
@@ -20,26 +19,16 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function LandingSection() {
-  const dispatch = useDispatch();
-  const { backgroundImage } = useSelector((state) => state.gallery);
-  const [imageLoaded, setImageLoaded] = useState(false);
   const [isReady, setIsReady] = useState(false);
 
+  // پرلودر دقیقاً ۲ ثانیه نمایش داده شود
   useEffect(() => {
-    dispatch(fetchBackgroundImage());
-  }, [dispatch]);
+    const timer = setTimeout(() => {
+      setIsReady(true);
+    }, 2000); // 2000ms = ۲ ثانیه
 
-  // وقتی عکس لود شد
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-    setTimeout(() => setIsReady(true), 300); // تاخیر برای انیمیشن
-  };
-
-  // اگر عکس لود نشد (خطا)
-  const handleImageError = () => {
-    setImageLoaded(true);
-    setTimeout(() => setIsReady(true), 300);
-  };
+    return () => clearTimeout(timer); // پاکسازی در صورت unmount
+  }, []);
 
   // پرلودر باحال
   const Preloader = () => (
@@ -118,21 +107,10 @@ export default function LandingSection() {
           isReady ? "opacity-100" : "opacity-0"
         }`}
         style={{
-          backgroundImage: `url(${backgroundImage})`,
+          backgroundImage: `url(/img/anti/5776173926256937899.jpg)`,
           backgroundAttachment: "fixed",
         }}
       >
-        {/* تصویر پیش‌بارگذاری شده (نامرئی) */}
-        {backgroundImage && (
-          <img
-            src={backgroundImage}
-            alt="پیش‌بارگذاری"
-            onLoad={handleImageLoad}
-            onError={handleImageError}
-            className="hidden"
-          />
-        )}
-
         {/* لایه تیره */}
         <div className="absolute inset-0 bg-black/70"></div>
 
