@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchGalleryImages = createAsyncThunk(
   "gallery/fetchGalleryImages",
   async () => {
-    const res = await fetch("/api/gallery");
+    const res = await fetch("/gallery");
     if (!res.ok) throw new Error("Failed to fetch gallery");
     return res.json();
   }
@@ -14,7 +14,7 @@ export const fetchGalleryImages = createAsyncThunk(
 export const fetchBackgroundImage = createAsyncThunk(
   "gallery/fetchBackgroundImage",
   async () => {
-    const res = await fetch("/api/gallery");
+    const res = await fetch("/gallery");
     if (!res.ok) throw new Error("Failed to fetch background");
     const data = await res.json();
     return data.backgroundImage;
