@@ -27,3 +27,16 @@ html {
   scrollbar-width: none; /* فایرفاکس */
   -ms-overflow-style: none; /* اینترنت اکسپلورر و Edge قدیمی */
 }
+/* src/styles/globals.css یا هر فایل گلوبالی که در _app.js/_app.tsx ایمپورت می‌کنید */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* جلوگیری از اسکرول افقی */
+  box-sizing: border-box; /* برای محاسبه درست padding و border */
+}
+
+/* مطمئن شوید تمام المان‌ها box-sizing را به ارث ببرند */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
