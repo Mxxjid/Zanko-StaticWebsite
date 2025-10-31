@@ -1,6 +1,9 @@
+// app/layout.jsx
 import "../styles/globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
+import ClientLayout from "./ClientLayout";
 
+// فونت‌ها
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -10,17 +13,46 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// متادیتا
 export const metadata = {
-  title: "زانکو دکور | تولید کننده پرده بیمارستانی و آنتی‌باکتریال",
+  // استفاده از template برای صفحات داخلی
+  title: {
+    default: "زانکو دکور | تولید کننده پرده بیمارستانی آنتی باکتریال",
+    template: "%s | زانکو دکور - پرده بیمارستانی و آنتی باکتریال",
+  },
   description:
-    "زانکو دکور تولید کننده و مجری پرده‌های بیمارستانی، آنتی‌باکتریال، شمعی و زبرا با کیفیت بالا در سراسر ایران. خدمات حرفه‌ای با تضمین کیفیت و سرعت عمل.",
-  keywords:
-    "پرده بیمارستانی, پرده آنتی‌باکتریال, پرده زبرا, پرده شمعی, زانکو دکور, پرده بین تختی, تولید پرده بیمارستانی, خدمات پرده بیمارستان, ایران",
+    "زانکو دکور تولید کننده پرده بیمارستانی آنتی باکتریال، پرده بین تختی، پرده زبرا و شمعی با کیفیت بالا. خرید پرده بیمارستانی با قیمت مناسب و خدمات سراسری در ایران.",
+  
+  keywords: [
+    "پرده بیمارستانی",
+    "پرده آنتی باکتریال",
+    "پرده بین تختی",
+    "خرید پرده بیمارستانی",
+    "میل پرده بیمارستانی",
+    "پرده بین تختی بیمارستانی",
+    "پرده آنتی باکتریال بیمارستانی",
+    "تولید پرده بیمارستانی",
+    "پرده بیمارستانی ارزان",
+    "پرده بیمارستان",
+    "پرده کلینیک",
+    "پرده پزشکی",
+    "زانکو دکور",
+    "پرده زبرا بیمارستانی",
+    "پرده شمعی بیمارستانی",
+    "پرده ضد آب بیمارستانی",
+    "پرده اتاق عمل"
+  ].join(", "),
+
   authors: [{ name: "Zanko Dekor" }],
+  robots: "index, follow",
+  alternates: {
+    canonical: "https://www.zankodekor.ir",
+  },
+
   openGraph: {
-    title: "زانکو دکور | پرده‌های بیمارستانی با کیفیت",
+    title: "زانکو دکور | تولید و خرید پرده بیمارستانی آنتی باکتریال",
     description:
-      "تولید و اجرای پرده‌های بیمارستانی آنتی‌باکتریال، شمعی و زبرا با خدمات سراسری در ایران. کیفیت تضمینی با زانکو دکور.",
+      "تولید و فروش پرده بیمارستانی، پرده بین تختی، پرده آنتی باکتریال با کیفیت بالا و قیمت مناسب. خدمات سراسری در ایران.",
     url: "https://www.zankodekor.ir",
     siteName: "Zanko Dekor",
     images: [
@@ -28,21 +60,19 @@ export const metadata = {
         url: "https://www.zankodekor.ir/img/anti/پرده-بیمارستانی-1.jpg",
         width: 1200,
         height: 630,
-        alt: "پرده بیمارستانی زانکو دکور",
+        alt: "پرده بیمارستانی آنتی باکتریال زانکو دکور",
       },
     ],
     locale: "fa_IR",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "زانکو دکور | پرده‌های بیمارستانی",
+    title: "زانکو دکور | خرید پرده بیمارستانی آنتی باکتریال",
     description:
-      "پرده‌های آنتی‌باکتریال، شمعی و زبرا با کیفیت بالا از زانکو دکور. خدمات حرفه‌ای در سراسر ایران.",
+      "پرده بیمارستانی، پرده بین تختی و آنتی باکتریال با کیفیت بالا از زانکو دکور. ارسال به سراسر ایران.",
     images: ["https://www.zankodekor.ir/img/anti/پرده-بیمارستانی-1.jpg"],
-  },
-  alternates: {
-    canonical: "https://www.zankodekor.ir",
   },
 };
 
@@ -82,8 +112,9 @@ export default function RootLayout({ children }) {
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans bg-white text-gray-900`}
+        suppressHydrationWarning={true}
       >
-        {children}
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

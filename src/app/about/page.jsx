@@ -1,58 +1,78 @@
-"use client";
+// app/about/page.tsx
+import ClientAboutPage from "./ClientAboutPage.jsx";
+import { Metadata } from "next";
 
-import { motion } from "framer-motion";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+// متادیتای سئو شده
+export async function generateMetadata() {
+  return {
+    title: "درباره زانکو دکور | تولید کننده پرده بیمارستانی آنتی باکتریال",
+    description:
+      "زانکو دکور از سال ۱۳۹۱ تولید کننده تخصصی پرده بیمارستانی، پرده آنتی باکتریال، پرده بین تختی و زبرا با کیفیت بالا و خدمات سراسری در ایران.",
+    keywords:
+      "زانکو دکور, درباره زانکو دکور, تولید کننده پرده بیمارستانی, پرده آنتی باکتریال, پرده بین تختی, شرکت پرده بیمارستانی",
+    openGraph: {
+      title: "درباره زانکو دکور | تولید کننده پرده بیمارستانی",
+      description:
+        "از سال ۱۳۹۱ با هدف ارتقای بهداشت و زیبایی در بیمارستان‌ها و کلینیک‌ها فعالیت می‌کنیم.",
+      url: "https://www.zankodekor.ir/about",
+      images: [
+        {
+          url: "https://www.zankodekor.ir/img/others/cropped-photo_2024-09-17_17-26-59-1.png",
+          width: 1200,
+          height: 630,
+          alt: "لوگو زانکو دکور",
+        },
+      ],
+      locale: "fa_IR",
+      type: "website",
+    },
+    alternates: {
+      canonical: "https://www.zankodekor.ir/about",
+    },
+    robots: "index, follow",
+  };
+}
 
-export default function ContactPage() {
+// Structured Data - Organization
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "زانکو دکور",
+  url: "https://www.zankodekor.ir",
+  logo: "https://www.zankodekor.ir/img/others/cropped-photo_2024-09-17_17-26-59-1.png",
+  description:
+    "تولید کننده تخصصی پرده بیمارستانی آنتی باکتریال، پرده بین تختی، زبرا و شمعی از سال ۱۳۹۱.",
+  foundingDate: "2012",
+  founder: "تیم متخصص زانکو دکور",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "ولیعصر شمالی، کمالشهر",
+    addressLocality: "البرز",
+    addressRegion: "تهران",
+    addressCountry: "IR",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+989122655585",
+    contactType: "customer service",
+    areaServed: "IR",
+    availableLanguage: "Persian",
+  },
+  sameAs: [
+    "https://instagram.com/zankodekor",
+    "https://t.me/zankodekor",
+    "https://wa.me/989122655585",
+  ],
+};
+
+export default function AboutPage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main
-        className="flex-1 mt-5 w-full sm:max-w-3/4 mx-auto px-4 sm:px-6 md:px-8 py-8 bg-white text-black font-sans"
-        dir="rtl"
-      >
-        {/* Hero Section with Images */}
-        <section className="text-center mb-8">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#229799] mb-6"
-          >
-            پرده آنتی باکتریال بیمارستانی زانکو دکور
-          </motion.h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-            <img
-              src="/img/others/پرده-بیمارستانی-26.jpg"
-              alt="پرده آنتی باکتریال 1"
-              className="w-full h-48 sm:h-64 md:h-72 object-cover rounded-lg"
-            />
-            <img
-              src="/img/anti/پرده-بیمارستانی-14.jpg"
-              alt="پرده آنتی باکتریال 2"
-              className="w-full h-48 sm:h-64 md:h-72 object-cover rounded-lg"
-            />
-            <img
-              src="/img/shami/پرده-بیمارستانی-32.jpg"
-              alt="پرده آنتی باکتریال 3"
-              className="w-full h-48 sm:h-64 md:h-72 object-cover rounded-lg"
-            />
-          </div>
-        </section>
-         {/* About Zanko Decor */}
-        <section className="space-y-6 text-sm sm:text-base mb-8">
-          <h2 className="text-xl sm:text-2xl font-semibold text-[#229799] mb-4">زانکو دکور چیست؟</h2>
-          <p className="text-justify leading-8">
-            زانکو دکور از سال ۱۳۹۱ با توکل بر خدا و با تکیه بر تیمی مجرب و متخصص در زمینه طراحی و تولید پرده‌های بیمارستانی و اداری آغاز به کار کرد. ما با هدف ایجاد محیطی امن‌تر، آرام‌تر و با نشاط‌تر برای بیماران و پرسنل بیمارستان‌ها فعالیت می‌کنیم. پرده‌های ما نه تنها حریم خصوصی بیماران را حفظ می‌کنند، بلکه با استفاده از رنگ‌بندی‌های متنوع و زیبا، به بهبود روحیه افراد و هماهنگی با دکوراسیون محیط‌های درمانی کمک می‌کنند.
-          </p>
-          <h2 className="text-xl sm:text-2xl font-semibold text-[#229799] mb-4">هدف ما چیست؟</h2>
-          <p className="text-justify leading-8">
-            هدف زانکو دکور، ارائه محصولاتی با کیفیت بالا و طراحی‌های مدرن است که ضمن رعایت استانداردهای بهداشتی، به زیبایی و کارایی فضاهای درمانی و اداری بیفزاید. ما در تلاشیم تا با استفاده از مواد اولیه مرغوب و تکنولوژی‌های پیشرفته، پرده‌هایی تولید کنیم که هم دوام بالایی داشته باشند و هم حس آرامش و نشاط را به محیط القا کنند. رضایت مشتریان و ایجاد فضایی دلپذیر برای کاربران، اولویت اصلی ماست.
-          </p>
-        </section>
-      </main>
-      <Footer />
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <ClientAboutPage />
+    </>
   );
 }
