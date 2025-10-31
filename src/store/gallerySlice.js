@@ -1,13 +1,23 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// fetch از API Route سرور
-export const fetchGallery = createAsyncThunk(
-  "gallery/fetchGallery",
+// 1. فچ تصاویر گالری
+export const fetchGalleryImages = createAsyncThunk(
+  "gallery/fetchGalleryImages",
   async () => {
     const res = await fetch("/api/gallery");
     if (!res.ok) throw new Error("Failed to fetch gallery");
+    return res.json();
+  }
+);
+
+// 2. فچ تصویر پس‌زمینه (جدا)
+export const fetchBackgroundImage = createAsyncThunk(
+  "gallery/fetchBackgroundImage",
+  async () => {
+    const res = await fetch("/api/gallery");
+    if (!res.ok) throw new Error("Failed to fetch background");
     const data = await res.json();
-    return data;
+    return data.backgroundImage;
   }
 );
 
@@ -24,18 +34,31 @@ const gallerySlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchGallery.pending, (state) => {
+      // برای گالری
+      .addCase(fetchGalleryImages.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
-      .addCase(fetchGallery.fulfilled, (state, action) => {
+      .addCase(fetchGalleryImages.fulfilled, (state, action) => {
         state.loading = false;
-        state.images = action.payload.images;
+        state.images = action.payload.images || [];
         state.backgroundImage = action.payload.backgroundImage;
       })
-      .addCase(fetchGallery.rejected, (state, action) => {
+      .addCase(fetchGalleryImages.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+      })
+
+      // برای پس‌زمینه
+      .addCase(fetchBackgroundImage.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchBackgroundImage.fulfilled, (state, action) => {
+        state.loading = false;
+        state.backgroundImage = action.payload;
+      })
+      .addCase(fetchBackgroundImage.rejected, (state, action) => {
+        state.loading = false;
+        state.backgroundImage = initialState.backgroundImage;
       });
   },
 });
