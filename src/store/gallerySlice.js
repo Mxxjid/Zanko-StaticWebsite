@@ -1,31 +1,13 @@
-// store/gallerySlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { client } from "../lib/sanityClient";
 
-// فچ تصاویر گالری
-export const fetchGalleryImages = createAsyncThunk(
-  "gallery/fetchImages",
+// fetch از API Route سرور
+export const fetchGallery = createAsyncThunk(
+  "gallery/fetchGallery",
   async () => {
-    const query = `*[_type == "galleryImage"] {
-      _id,
-      alt,
-      category,
-      "src": image.asset->url
-    }`;
-    const images = await client.fetch(query);
-    return images;
-  }
-);
-
-// فچ تصویر پس‌زمینه
-export const fetchBackgroundImage = createAsyncThunk(
-  "gallery/fetchBackground",
-  async () => {
-    const query = `*[_type == "backgroundImage"][0] {
-      "src": image.asset->url
-    }`;
-    const result = await client.fetch(query);
-    return result?.src || "/img/anti/پرده-بیمارستانی-1.jpg"; // fallback
+    const res = await fetch("/api/gallery");
+    if (!res.ok) throw new Error("Failed to fetch gallery");
+    const data = await res.json();
+    return data;
   }
 );
 
@@ -42,21 +24,18 @@ const gallerySlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // Gallery Images
-      .addCase(fetchGalleryImages.pending, (state) => {
+      .addCase(fetchGallery.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
-      .addCase(fetchGalleryImages.fulfilled, (state, action) => {
+      .addCase(fetchGallery.fulfilled, (state, action) => {
         state.loading = false;
-        state.images = action.payload;
+        state.images = action.payload.images;
+        state.backgroundImage = action.payload.backgroundImage;
       })
-      .addCase(fetchGalleryImages.rejected, (state, action) => {
+      .addCase(fetchGallery.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      })
-      // Background Image
-      .addCase(fetchBackgroundImage.fulfilled, (state, action) => {
-        state.backgroundImage = action.payload;
       });
   },
 });
