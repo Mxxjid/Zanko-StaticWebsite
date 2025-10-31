@@ -1,6 +1,6 @@
 // store/gallerySlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { client } from "@/lib/sanityClient";
+import { client } from "../lib/sanityClient";
 
 // فچ تصاویر گالری
 export const fetchGalleryImages = createAsyncThunk(
