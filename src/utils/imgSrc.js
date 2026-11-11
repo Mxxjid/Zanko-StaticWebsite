@@ -1,23 +1,23 @@
 const images = [
-    {
+  {
     id: 1,
     category: "antibacterial",
     src: "/img/anti/5776173926256938373.webp",
     alt: "پرده آنتی‌باکتریال ",
   },
-     {
+  {
     id: 2,
     category: "antibacterial",
     src: "/img/anti/5776173926256937899.webp",
     alt: "پرده آنتی‌باکتریال",
   },
-    {
+  {
     id: 3,
     category: "antibacterial",
     src: "/img/anti/5776173926256938373.webp",
     alt: "پرده آنتی‌باکتریال ",
   },
-    {
+  {
     id: 4,
     category: "antibacterial",
     src: "/img/anti/5776173926256938377.webp",
@@ -36,7 +36,7 @@ const images = [
     alt: "پرده آنتی‌باکتریال 2",
   },
   {
-    id:15,
+    id: 15,
     category: "antibacterial",
     src: "/img/anti/پرده-بیمارستانی-12.webp",
     alt: "پرده آنتی‌باکتریال 3",
@@ -98,79 +98,79 @@ const images = [
 
   // پرده‌های شمعی
   {
-    id: 13,
+    id: 17,
     category: "wax",
     src: "/img/shami/پرده-بیمارستانی-15.webp",
     alt: "پرده شمعی ۱",
   },
   {
-    id: 14,
+    id: 18,
     category: "wax",
     src: "/img/shami/پرده-بیمارستانی-16.webp",
     alt: "پرده شمعی 2",
   },
   {
-    id: 15,
+    id: 19,
     category: "wax",
     src: "/img/shami/پرده-بیمارستانی-20.webp",
     alt: "پرده شمعی 3",
   },
   {
-    id: 16,
+    id: 20,
     category: "wax",
     src: "/img/shami/پرده-بیمارستانی-22.webp",
     alt: "پرده شمعی 4",
   },
   {
-    id: 17,
+    id: 21,
     category: "wax",
     src: "/img/shami/پرده-بیمارستانی-24.webp",
     alt: "پرده شمعی 5",
   },
   {
-    id: 18,
+    id: 22,
     category: "wax",
     src: "/img/shami/پرده-بیمارستانی-28.webp",
     alt: "پرده شمعی 6",
   },
   {
-    id: 19,
+    id: 23,
     category: "wax",
     src: "/img/shami/پرده-بیمارستانی-29.webp",
     alt: "پرده شمعی 7",
   },
   {
-    id: 20,
+    id: 24,
     category: "wax",
     src: "/img/shami/پرده-بیمارستانی-30.webp",
     alt: "پرده شمعی 8",
   },
   {
-    id: 21,
+    id: 25,
     category: "wax",
     src: "/img/shami/پرده-بیمارستانی-31.webp",
     alt: "پرده شمعی 9",
   },
   {
-    id: 22,
+    id: 26,
     category: "wax",
     src: "/img/shami/پرده-بیمارستانی-32.webp",
     alt: "پرده شمعی 10",
   },
   {
-    id: 23,
+    id: 27,
     category: "wax",
     src: "/img/shami/پرده-بیمارستانی-37.webp",
     alt: "پرده شمعی 11",
   },
   {
-    id: 24,
+    id: 28,
     category: "wax",
     src: "/img/shami/پرده-بیمارستانی-44.webp",
     alt: "پرده شمعی 12",
   },
   {
-    id: 25,
+    id: 29,
     category: "wax",
     src: "/img/shami/پرده-بیمارستانی-45.webp",
     alt: "پرده شمعی 13",
@@ -178,35 +178,35 @@ const images = [
 
   // پرده‌های زبرا (دسته جدید)
   {
-    id: 26,
+    id: 30,
     category: "zebra",
     src: "/img/others/پرده-بیمارستانی-49.webp",
     alt: "پرده زبرا 1",
   },
   {
-    id: 27,
+    id: 31,
     category: "zebra",
     src: "/img/others/پرده-بیمارستانی-11.webp",
     alt: "پرده زبرا 2",
   },
   {
-    id: 28,
+    id: 32,
     category: "zebra",
     src: "/img/others/پرده-بیمارستانی-23.webp",
     alt: "پرده زبرا 3",
   },
   {
-    id: 29,
+    id: 33,
     category: "zebra",
     src: "/img/others/پرده-بیمارستانی-33.webp",
     alt: "پرده زبرا 4",
   },
   {
-    id: 30,
+    id: 34,
     category: "zebra",
     src: "/img/others/پرده-بیمارستانی-48.webp",
     alt: "پرده زبرا 5",
   },
 ];
 
-  export default images
+export default images
