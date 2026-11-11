@@ -1,161 +1,98 @@
-"use client";
+import { motion } from "framer-motion";
+import { FaShieldAlt, FaBroom, FaTint, FaVolumeDown, FaCogs, FaCheckCircle } from "react-icons/fa";
 
-import {
-  MotionH2,
-  MotionP,
-  MotionH3,
-  MotionUl,
-  MotionLi,
-} from "./Motion";
-import {
-  headingVariants,
-  paragraphVariants,
-  scaleVariants,
-  listVariants,
-  listItemVariants,
-} from "../utils/animations";
+const features = [
+  { icon: FaShieldAlt, text: "حفظ حریم خصوصی بیماران در زمان معاینه یا درمان" },
+  { icon: FaBroom, text: "خاصیت ضد میکروب و کمک به کنترل عفونت" },
+  { icon: FaTint, text: "قابلیت شست‌وشو و ضدعفونی شدن آسان" },
+  { icon: FaCogs, text: "دوام و استحکام در برابر سایش و پارگی" },
+  { icon: FaVolumeDown, text: "عایق صدا و نور برای ایجاد محیطی آرام‌تر" },
+  { icon: FaCheckCircle, text: "طراحی ساده با رنگ‌های آرام‌بخش" },
+];
+
+const types = [
+  "پرده‌های ضد باکتریال برای اتاق عمل و بخش‌های ویژه",
+  "پرده‌های ضد آب و مقاوم به مواد شیمیایی",
+  "پرده‌های الکتریکی یا مکانیکی با قابلیت باز و بسته شدن آسان",
+];
 
 export default function HospitalRoleSection() {
   return (
-    <section className="w-full py-12 px-5 sm:px-28 bg-white">
-      <div className="mx-auto sm:px-12 text-start">
-        <MotionH2
-          className="text-2xl sm:text-4xl font-extrabold text-gray-900 mb-6"
-          variants={headingVariants}
-          initial="hidden"
-          whileInView="visible"
+    <section className="w-full py-16 sm:py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          نقش و اهمیت پرده‌ بیمارستانی در حفظ حریم خصوصی و کنترل عفونت
-        </MotionH2>
+          <span className="inline-block text-[#229799] font-semibold text-sm mb-2">اهمیت پرده بیمارستانی</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-4">
+            نقش پرده بیمارستانی در حفظ حریم خصوصی و کنترل عفونت
+          </h2>
+          <p className="text-gray-500 max-w-3xl mx-auto leading-relaxed">
+            پرده‌ بیمارستانی یکی از اجزای مهم و ضروری در محیط‌های درمانی است که نقش مهمی در حفظ حریم خصوصی بیماران، کنترل عفونت و ایجاد محیطی آرام و امن برای بیماران و کارکنان دارد.
+          </p>
+        </motion.div>
 
-        <MotionP
-          className="text-lg sm:text-xl text-black mb-6 leading-relaxed"
-          variants={paragraphVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-        >
-          پرده‌ بیمارستانی یکی از اجزای مهم و ضروری در محیط‌های درمانی است که نقش مهمی در حفظ حریم خصوصی بیماران، کنترل عفونت و ایجاد محیطی آرام و امن برای بیماران و کارکنان دارد...
-        </MotionP>
-
-        <MotionH3
-          className="text-2xl sm:text-3xl font-bold text-[#37A0A2] mb-4"
-          variants={scaleVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-        >
-          ویژگی‌های کلیدی پرده‌های بیمارستانی
-        </MotionH3>
-        <MotionUl
-          className="text-lg sm:text-xl text-black list-disc list-inside space-y-2 mb-6"
-          variants={listVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-        >
-          {[
-            "حفظ حریم خصوصی بیماران در زمان معاینه یا درمان",
-            "خاصیت ضد میکروب و کمک به کنترل عفونت",
-            "قابلیت شست‌وشو و ضدعفونی شدن آسان",
-            "دوام و استحکام در برابر سایش و پارگی",
-            "عایق صدا و نور برای ایجاد محیطی آرام‌تر",
-          ].map((item, i) => (
-            <MotionLi key={i} variants={listItemVariants}>
-              {item}
-            </MotionLi>
-          ))}
-        </MotionUl>
-
-        <MotionH3
-          className="text-2xl sm:text-3xl font-bold text-[#37A0A2] mb-4"
-          variants={scaleVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ delay: 0.8 }}
-        >
-          انواع پرده‌های بیمارستانی
-        </MotionH3>
-        <MotionUl
-          className="text-lg sm:text-xl text-black list-disc list-inside space-y-2 mb-6"
-          variants={listVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ delay: 1.0 }}
-        >
-          {[
-            "پرده‌های ضد باکتریال برای اتاق عمل و بخش‌های ویژه",
-            "پرده‌های ضد آب و مقاوم به مواد شیمیایی",
-            "پرده‌های الکتریکی یا مکانیکی با قابلیت باز و بسته شدن آسان",
-          ].map((item, i) => (
-            <MotionLi key={i} variants={listItemVariants}>
-              {item}
-            </MotionLi>
-          ))}
-        </MotionUl>
-
-        <MotionH3
-          className="text-2xl sm:text-3xl font-bold text-[#37A0A2] mb-4"
-          variants={scaleVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ delay: 1.2 }}
-        >
-          نکات مهم در انتخاب پرده بیمارستانی
-        </MotionH3>
-        <MotionUl
-          className="text-lg sm:text-xl text-black list-disc list-inside space-y-2 mb-6"
-          variants={listVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ delay: 1.4 }}
-        >
-          {[
-            "کیفیت بالای پارچه مقاوم به شست‌وشو و ضدعفونی",
-            "رعایت استانداردهای بهداشتی برای جلوگیری از گسترش بیماری",
-            "طراحی ساده با رنگ‌های آرام‌بخش برای بهبود روحیه بیماران",
-          ].map((item, i) => (
-            <MotionLi
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-16">
+          {features.map((feature, i) => (
+            <motion.div
               key={i}
-              custom={i}
-              variants={listItemVariants}
-              initial="hidden"
-              whileInView="visible"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
             >
-              {item}
-            </MotionLi>
+              <div className="w-12 h-12 bg-[#229799]/10 rounded-xl flex items-center justify-center mb-4">
+                <feature.icon className="text-[#229799]" size={22} />
+              </div>
+              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">{feature.text}</p>
+            </motion.div>
           ))}
-        </MotionUl>
+        </div>
 
-        <MotionH3
-          className="text-2xl sm:text-3xl font-bold text-[#37A0A2] mb-4"
-          variants={scaleVariants}
-          initial="hidden"
-          whileInView="visible"
+        {/* Types */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 1.6 }}
+          className="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-gray-100"
         >
-          زانکو را بیشتر بشناسید
-        </MotionH3>
-        <MotionP
-          className="text-lg sm:text-xl text-black leading-relaxed"
-          variants={paragraphVariants}
-          initial="hidden"
-          whileInView="visible"
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">انواع پرده‌های بیمارستانی</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {types.map((type, i) => (
+              <div key={i} className="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
+                <span className="w-8 h-8 bg-[#229799] text-white rounded-lg flex items-center justify-center shrink-0 text-sm font-bold">{i + 1}</span>
+                <p className="text-gray-700 text-sm leading-relaxed">{type}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 1.8 }}
+          className="mt-12 text-center"
         >
-          ما توانسته‌ایم با تکیه بر نیروهای مجرب در تولید و اجرای پرده‌های بیمارستانی و اداری، سهمی کوچک در آبادانی میهن عزیزمان داشته باشیم...
-        </MotionP>
+          <div className="bg-gradient-to-r from-[#229799] to-[#1a7a7c] rounded-3xl p-8 sm:p-12 text-white">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4">زانکو را بیشتر بشناسید</h3>
+            <p className="text-white/80 max-w-2xl mx-auto mb-8 leading-relaxed">
+              ما توانسته‌ایم با تکیه بر نیروهای مجرب در تولید و اجرای پرده‌های بیمارستانی و اداری، سهمی کوچک در آبادانی میهن عزیزمان داشته باشیم.
+            </p>
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-white text-[#229799] px-8 py-3.5 rounded-xl font-bold hover:bg-gray-50 transition-all duration-300 hover:-translate-y-0.5"
+            >
+              تماس با ما
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

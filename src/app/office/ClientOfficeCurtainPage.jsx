@@ -1,163 +1,112 @@
-// app/pardeh-edari/ClientOfficeCurtainPage.jsx
 "use client";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import { FaCheckCircle, FaPhoneAlt, FaLightbulb, FaCogs, FaPalette, FaShieldAlt } from "react-icons/fa";
+
+const features = [
+  { icon: FaLightbulb, text: "کنترل آسان نور و سایه" },
+  { icon: FaCheckCircle, text: "شستشوی آسان (زبرا)" },
+  { icon: FaPalette, text: "تنوع رنگ و طرح" },
+  { icon: FaShieldAlt, text: "مقاوم در برابر رطوبت و خوردگی" },
+  { icon: FaCogs, text: "نصب دستی و موتوری" },
+  { icon: FaCheckCircle, text: "دوام بالا و نگهداری آسان" },
+];
+
+const images = [
+  { src: "/img/others/پرده-بیمارستانی-23.jpg", alt: "پرده زبرا اداری - کنترل نور" },
+  { src: "/img/others/پرده-بیمارستانی-11.jpg", alt: "کرکره چوبی لوکس - فضای مدیریتی" },
+  { src: "/img/others/پرده-بیمارستانی-48.jpg", alt: "کرکره فلزی - مقاوم و مدرن" },
+  { src: "/img/others/پرده-بیمارستانی-49.jpg", alt: "پرده اداری در بیمارستان" },
+];
 
 export default function ClientOfficeCurtainPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-
-      <main className="flex-1 bg-gradient-to-b from-gray-50 to-white" dir="rtl">
-        <div className="max-w-7xl mx-auto">
-
-          {/* Hero */}
-          <section className="bg-gradient-to-r from-[#37A0A2]/10 to-[#37A0A2]/5 py-12 px-4 text-center">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#229799] mb-4"
-            >
-              پرده اداری
-            </motion.h1>
-            <p className="text-lg sm:text-xl text-gray-700 max-w-4xl mx-auto">
-              زبرا، کرکره چوبی و فلزی — ترکیبی از <strong>زیبایی</strong>، <strong>کارایی</strong> و <strong>مدرنیته</strong>
-            </p>
-          </section>
-
-          {/* Carousel */}
-          <section className="py-8 px-4">
-            <h2 className="text-2xl font-bold text-center text-[#229799] mb-8">گالری پرده‌های اداری</h2>
-            <Swiper
-              modules={[Autoplay, Pagination, Navigation]}
-              spaceBetween={20}
-              slidesPerView={1}
-              autoplay={{ delay: 3000 }}
-              pagination={{ clickable: true }}
-              navigation
-              className="rounded-xl shadow-xl"
-            >
-              {[
-                { src: "/img/others/پرده-بیمارستانی-23.jpg", alt: "پرده زبرا اداری - کنترل نور" },
-                { src: "/img/others/پرده-بیمارستانی-11.jpg", alt: "کرکره چوبی لوکس - فضای مدیریتی" },
-                { src: "/img/others/پرده-بیمارستانی-48.jpg", alt: "کرکره فلزی - مقاوم و مدرن" },
-                { src: "/img/others/پرده-بیمارستانی-49.jpg", alt: "پرده اداری در بیمارستان" },
-              ].map((s, i) => (
-                <SwiperSlide key={i}>
-                  <Image
-                    src={s.src}
-                    alt={s.alt}
-                    width={1200}
-                    height={600}
-                    className="w-full h-72 sm:h-96 object-cover rounded-xl"
-                    loading="eager"
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </section>
-
-          {/* محتوا */}
-          <section className="py-10 px-4 max-w-5xl mx-auto text-justify leading-8 space-y-6 text-gray-700">
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              className="text-lg"
-            >
-              <strong>پرده اداری</strong> یکی از مهم‌ترین عناصر در دکوراسیون فضاهای کاری و درمانی است. زانکو دکور با ارائه <strong>پرده زبرا</strong>، <strong>کرکره چوبی</strong> و <strong>کرکره فلزی</strong>، بهترین گزینه‌ها را برای کنترل نور، زیبایی و کارایی ارائه می‌دهد.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.1 }}
-            >
-              <h3 className="text-xl font-bold text-[#229799] mb-3">پرده زبرا</h3>
-              <p>
-                از دو لایه پارچه شفاف و مات تشکیل شده و با <strong>کنترل دقیق نور</strong> بدون جمع شدن کامل، حریم خصوصی و زیبایی را تضمین می‌کند. قابل شستشو، نصب دستی یا موتوری.
-              </p>
+      <main className="flex-1" dir="rtl">
+        <section className="bg-gradient-to-b from-[#229799]/5 to-white py-16 sm:py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+              <span className="inline-block bg-[#229799]/10 text-[#229799] font-semibold text-sm px-4 py-1.5 rounded-full mb-4">محصولات</span>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">پرده اداری</h1>
+              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">زبرا، کرکره چوبی و فلزی — ترکیبی از زیبایی، کارایی و مدرنیته</p>
             </motion.div>
+          </div>
+        </section>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <h3 className="text-xl font-bold text-[#229799] mb-3">کرکره چوبی</h3>
-              <p>
-                تیغه‌های ۲۵ یا ۵۰ میلی‌متری از چوب طبیعی، با بافت گرم و لوکس. مقاوم در برابر رطوبت، مناسب برای <strong>دفاتر مدیریتی</strong> و فضاهای رسمی.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-            >
-              <h3 className="text-xl font-bold text-[#229799] mb-3">کرکره فلزی</h3>
-              <p>
-                آلومینیومی، <strong>ضد زنگ</strong>، سبک و مقاوم. ایده‌آل برای <strong>بیمارستان‌ها</strong>، کلینیک‌ها و محیط‌های پرتردد.
-              </p>
-            </motion.div>
-          </section>
-
-          {/* ویژگی‌ها */}
-          <section className="bg-white py-12 px-4 rounded-2xl shadow-xl my-12">
-            <h2 className="text-2xl font-bold text-[#229799] mb-8 text-center">ویژگی‌های کلیدی</h2>
-            <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {[
-                { icon: <FaLightbulb />, text: "کنترل آسان نور و سایه" },
-                { icon: <FaCheckCircle />, text: "شستشوی آسان (زبرا)" },
-                { icon: <FaPalette />, text: "تنوع رنگ و طرح" },
-                { icon: <FaShieldAlt />, text: "مقاوم در برابر رطوبت و خوردگی" },
-                { icon: <FaCogs />, text: "نصب دستی و موتوری" },
-                { icon: <FaCheckCircle />, text: "دوام بالا و نگهداری آسان" },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-4 text-lg bg-gray-50 p-4 rounded-xl">
-                  <div className="text-2xl text-[#229799]">{item.icon}</div>
-                  <span>{item.text}</span>
-                </div>
+        <section className="py-12">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              {images.map((img, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                  className="relative rounded-2xl overflow-hidden shadow-md group cursor-pointer aspect-[4/3]">
+                  <Image src={img.src} alt={img.alt} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 640px) 100vw, 50vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <span className="text-white text-sm font-medium">{img.alt}</span>
+                  </div>
+                </motion.div>
               ))}
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* CTA */}
-          <motion.section
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="bg-gradient-to-r from-[#229799] to-teal-600 text-white py-12 px-4 text-center rounded-2xl shadow-2xl"
-          >
-            <h3 className="text-2xl font-bold mb-4">مشاوره رایگان و سفارش فوری</h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:+989122655585"
-                className="flex items-center gap-2 bg-white text-[#229799] px-8 py-3 rounded-lg font-bold"
-              >
-                <FaPhoneAlt /> ۰۹۱۲-۲۶۵۵۵۸۵
-              </a>
-              <a
-                href="https://wa.me/989122655585"
-                target="_blank"
-                rel="noopener"
-                className="flex items-center gap-2 bg-green-500 px-8 py-3 rounded-lg font-bold"
-              >
-                واتساپ
-              </a>
+        <section className="py-12">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-gray-600 leading-relaxed">
+            <p className="text-lg"><strong>پرده اداری</strong> یکی از مهم‌ترین عناصر در دکوراسیون فضاهای کاری و درمانی است. زانکو دکور با ارائه <strong>پرده زبرا</strong>، <strong>کرکره چوبی</strong> و <strong>کرکره فلزی</strong>، بهترین گزینه‌ها را برای کنترل نور، زیبایی و کارایی ارائه می‌دهد.</p>
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-xl font-bold text-[#229799] mb-2">پرده زبرا</h3>
+                <p>از دو لایه پارچه شفاف و مات تشکیل شده و با <strong>کنترل دقیق نور</strong> بدون جمع شدن کامل، حریم خصوصی و زیبایی را تضمین می‌کند.</p>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-[#229799] mb-2">کرکره چوبی</h3>
+                <p>تیغه‌های ۲۵ یا ۵۰ میلی‌متری از چوب طبیعی، با بافت گرم و لوکس. مقاوم در برابر رطوبت.</p>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-[#229799] mb-2">کرکره فلزی</h3>
+                <p>آلومینیومی، <strong>ضد زنگ</strong>، سبک و مقاوم. ایده‌آل برای بیمارستان‌ها و محیط‌های پرتردد.</p>
+              </div>
             </div>
-          </motion.section>
+          </div>
+        </section>
 
-        </div>
+        <section className="py-12 bg-gray-50">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">ویژگی‌های کلیدی</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {features.map((item, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                  className="flex items-center gap-4 bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+                  <div className="w-10 h-10 bg-[#229799]/10 rounded-xl flex items-center justify-center shrink-0">
+                    <item.icon className="text-[#229799]" size={20} />
+                  </div>
+                  <span className="font-medium text-gray-800">{item.text}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-gradient-to-r from-[#229799] to-[#1a7a7c] text-white py-12 px-8 text-center rounded-3xl">
+              <h3 className="text-2xl sm:text-3xl font-bold mb-6">مشاوره رایگان و سفارش فوری</h3>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:+989122655585" className="inline-flex items-center justify-center gap-2 bg-white text-[#229799] px-8 py-3.5 rounded-xl font-bold hover:bg-gray-50 transition-all duration-300">
+                  <FaPhoneAlt /> ۰۹۱۲-۲۶۵۵۵۸۵
+                </a>
+                <a href="https://wa.me/989122655585" target="_blank" rel="noopener"
+                  className="inline-flex items-center justify-center gap-2 bg-green-500 px-8 py-3.5 rounded-xl font-bold hover:bg-green-600 transition-all duration-300">
+                  واتساپ
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
-
       <Footer />
     </div>
   );

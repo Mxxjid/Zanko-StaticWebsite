@@ -1,138 +1,111 @@
-"use client";
-
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { FaTelegramPlane, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaTelegramPlane, FaInstagram, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 
-// Animation variants for footer
-const footerVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-      staggerChildren: 0.2,
-    },
-  },
-};
+const footerLinks = [
+  { href: "/", label: "صفحه اصلی" },
+  { href: "/antibacterial", label: "پرده آنتی باکتریال" },
+  { href: "/shami", label: "پرده شمعی" },
+  { href: "/office", label: "پرده اداری" },
+  { href: "/colors", label: "رنگ بندی" },
+  { href: "/about", label: "درباره ما" },
+  { href: "/contact", label: "تماس با ما" },
+];
 
-// Animation variants for footer items
-const itemVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
+const socialLinks = [
+  { href: "https://t.me/nayeriaboozar", icon: FaTelegramPlane, label: "تلگرام", color: "hover:text-[#0088cc]" },
+  { href: "https://instagram.com/zankodecor", icon: FaInstagram, label: "اینستاگرام", color: "hover:text-[#E4405F]" },
+  { href: "https://wa.me/989122655585", icon: FaWhatsapp, label: "واتساپ", color: "hover:text-[#25D366]" },
+];
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-gray-900 text-white py-12" dir="rtl">
-      <motion.div
-        className="max-w-6xl mx-auto px-6 sm:px-12 grid grid-cols-1 md:grid-cols-3 gap-8"
-        variants={footerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Brand Section */}
-        <motion.div variants={itemVariants} className="flex flex-col items-center md:items-start">
-          <div className="relative w-32 h-16 mb-4">
-            <Image
-              src="/img/others/cropped-photo_2024-09-17_17-26-59-1.png"
-              alt="لوگوی زانکو دکور"
-              fill
-              className="object-contain"
-            />
+    <footer className="w-full bg-gray-900 text-white" dir="rtl">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+          {/* Brand */}
+          <div className="sm:col-span-2 lg:col-span-1">
+            <div className="flex items-center gap-1 mb-4">
+              <span className="text-2xl font-black text-[#37A0A2]">زانکو</span>
+              <span className="text-lg font-bold"> دکور</span>
+            </div>
+            <p className="text-gray-400 text-sm leading-relaxed mb-6">
+              تولیدکننده پرده‌های بیمارستانی آنتی‌باکتریال، زبرا و شمعی با کیفیت بالا و خدمات سراسری در ایران.
+            </p>
+            <div className="flex gap-3">
+              {socialLinks.map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
+                  className={`w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 ${s.color} hover:bg-gray-700 transition-all duration-300 hover:scale-110`}
+                  aria-label={s.label}>
+                  <s.icon size={18} />
+                </a>
+              ))}
+            </div>
           </div>
-          <p className="text-base sm:text-lg text-gray-300 text-right">
-            زانکو دکور، تولیدکننده پرده‌های بیمارستانی آنتی‌باکتریال، زبرا و شمعی با کیفیت بالا و خدمات سراسری در ایران.
-          </p>
-        </motion.div>
 
-        {/* Links Section */}
-        <motion.div variants={itemVariants} className="flex flex-col  items-start ">
-          <h3 className="text-xl font-bold text-[#37A0A2] mb-4">لینک‌های مفید</h3>
-          <nav>
-            <ul className="space-y-2 text-base sm:text-lg">
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-bold text-white mb-4">دسترسی سریع</h3>
+            <ul className="space-y-2.5">
+              {footerLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-gray-400 hover:text-[#37A0A2] transition-colors duration-200 text-sm">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Products */}
+          <div>
+            <h3 className="text-lg font-bold text-white mb-4">محصولات</h3>
+            <ul className="space-y-2.5">
+              <li><Link href="/antibacterial" className="text-gray-400 hover:text-[#37A0A2] transition-colors duration-200 text-sm">پرده آنتی باکتریال</Link></li>
+              <li><Link href="/shami" className="text-gray-400 hover:text-[#37A0A2] transition-colors duration-200 text-sm">پرده شمعی بین تختی</Link></li>
+              <li><Link href="/office" className="text-gray-400 hover:text-[#37A0A2] transition-colors duration-200 text-sm">پرده اداری</Link></li>
+              <li><Link href="/colors" className="text-gray-400 hover:text-[#37A0A2] transition-colors duration-200 text-sm">رنگ بندی</Link></li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-lg font-bold text-white mb-4">تماس با ما</h3>
+            <ul className="space-y-3 text-sm text-gray-400">
               <li>
-                <Link href="/" className="hover:text-[#37A0A2] transition-colors">
-                  صفحه اصلی
-                </Link>
+                <a href="tel:+989122655585" className="flex items-center gap-2 hover:text-[#37A0A2] transition-colors">
+                  <FaPhoneAlt className="text-[#37A0A2] shrink-0" size={14} />
+                  ۰۹۱۲-۲۶۵۵۵۸۵
+                </a>
               </li>
               <li>
-                <Link href="/" className="hover:text-[#37A0A2] transition-colors">
-                  گالری تصاویر
-                </Link>
+                <a href="mailto:info@zankodekor.ir" className="flex items-center gap-2 hover:text-[#37A0A2] transition-colors">
+                  <FaEnvelope className="text-[#37A0A2] shrink-0" size={14} />
+                  info@zankodekor.ir
+                </a>
               </li>
-              <li>
-                <Link href="/about" className="hover:text-[#37A0A2] transition-colors">
-                  درباره ما
-                </Link>
+              <li className="flex items-start gap-2">
+                <FaMapMarkerAlt className="text-[#37A0A2] shrink-0 mt-0.5" size={14} />
+                <span>البرز، کمالشهر، ولیعصر شمالی</span>
               </li>
-              <li>
-                <Link href="/contact" className="hover:text-[#37A0A2] transition-colors">
-                  تماس با ما
-                </Link>
+              <li className="flex items-center gap-2">
+                <FaClock className="text-[#37A0A2] shrink-0" size={14} />
+                <span>شنبه تا پنج‌شنبه: ۹ صبح - ۶ عصر</span>
               </li>
             </ul>
-          </nav>
-        </motion.div>
-
-        {/* Contact Section */}
-        <motion.div variants={itemVariants} className="flex flex-col items-start">
-          <h3 className="text-xl font-bold text-[#37A0A2] mb-4">تماس با ما</h3>
-          <ul className="space-y-2 text-base sm:text-lg text-gray-300">
-            <li>
-              تلفن: <a href="tel:+989122655585" className="hover:text-[#37A0A2] transition-colors">09122655585</a>
-            </li>
-            <li>
-              ایمیل: <a href="mailto:info@zankodekor.ir" className="hover:text-[#37A0A2] transition-colors">info@zankodekor.ir</a>
-            </li>
-            <li>آدرس: تهران، البرز، کمالشهر، ولیعصر شمالی</li>
-          </ul>
-          <div className="flex gap-4 mt-4">
-            <a
-              href="https://t.me/nayeriaboozar"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="تلگرام زانکو دکور"
-              className="hover:text-[#37A0A2] transition-colors"
-            >
-              <FaTelegramPlane className="w-6 h-6" />
-            </a>
-            <a
-              href="https://instagram.com/zankodecor"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="اینستاگرام زانکو دکور"
-              className="hover:text-[#37A0A2] transition-colors"
-            >
-              <FaInstagram className="w-6 h-6" />
-            </a>
-            <a
-              href="https://wa.me/989122655585"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="واتس‌اپ زانکو دکور"
-              className="hover:text-[#37A0A2] transition-colors"
-            >
-              <FaWhatsapp className="w-6 h-6" />
-            </a>
           </div>
-        </motion.div>
-      </motion.div>
-      <motion.div
-        className="max-w-6xl mx-auto px-6 sm:px-12 text-center mt-8 border-t border-gray-700 pt-4"
-        variants={itemVariants}
-      >
-        <p className="text-base text-gray-400">
-          © {new Date().getFullYear()} زانکو دکور. تمامی حقوق محفوظ است.
-        </p>
-      </motion.div>
+        </div>
+      </div>
+
+      {/* Bottom bar */}
+      <div className="border-t border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <p className="text-center text-gray-500 text-sm">
+            © {new Date().getFullYear()} زانکو دکور. تمامی حقوق محفوظ است.
+          </p>
+        </div>
+      </div>
     </footer>
   );
 }

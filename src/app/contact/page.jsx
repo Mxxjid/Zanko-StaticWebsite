@@ -1,6 +1,6 @@
 // app/contact/page.jsx
 import ClientContactPage from "./ClientContactPage";
-import { Metadata } from "next";
+
 
 // متادیتای سئو شده
 export const generateMetadata = () => {

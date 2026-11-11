@@ -1,6 +1,6 @@
 // app/pardeh-shami/page.jsx
 import ClientShamiPage from "./ClientShamiPage";
-import { Metadata } from "next";
+
 
 // متادیتای سئو شده (در Server Component)
 export const generateMetadata = () => {

@@ -1,9 +1,9 @@
 // app/pardeh-anti-bacterial/page.jsx
 import ClientAntiBacterialPage from "./ClientAntiBacterialPage";
-import { Metadata } from "next";
+
 
 // متادیتا (در Server Component)
-export const generateMetadata = ()=> {
+export async function generateMetadata() {
   return {
     title: "پرده آنتی باکتریال بیمارستانی | زانکو دکور - شستشوی ۴۰+ بار",
     description:

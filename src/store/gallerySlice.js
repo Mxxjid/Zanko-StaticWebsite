@@ -11,7 +11,7 @@ export const fetchGalleryData = createAsyncThunk(
 
 const initialState = {
   images: [],
-  backgroundImage: "/img/anti/پرده-بیمارستانی-1.jpg",
+  backgroundImage: "/img/anti/پرده-بیمارستانی-1.webp",
   loading: false,
   error: null,
 };

@@ -1,6 +1,6 @@
 // app/about/page.tsx
 import ClientAboutPage from "./ClientAboutPage.jsx";
-import { Metadata } from "next";
+
 
 // متادیتای سئو شده
 export async function generateMetadata() {

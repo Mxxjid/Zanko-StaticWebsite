@@ -1,6 +1,6 @@
 // app/pardeh-edari/page.jsx
 import ClientOfficeCurtainPage from "./ClientOfficeCurtainPage";
-import { Metadata } from "next";
+
 
 // متادیتای سئو شده
 export const generateMetadata = () => {

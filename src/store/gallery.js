@@ -21,13 +21,13 @@ export const fetchGalleryImages = async () => {
 
     return {
       images: images || [],
-      backgroundImage: bg?.src || "/img/anti/پرده-بیمارستانی-1.jpg",
+      backgroundImage: bg?.src || "/img/anti/پرده-بیمارستانی-1.webp",
     };
   } catch (error) {
     console.error("Sanity fetch error:", error);
     return {
       images: [],
-      backgroundImage: "/img/anti/پرده-بیمارستانی-1.jpg",
+      backgroundImage: "/img/anti/پرده-بیمارستانی-1.webp",
     };
   }
 };
